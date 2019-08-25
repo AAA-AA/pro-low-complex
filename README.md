@@ -19,8 +19,11 @@
 答：将jar包上传至服务器，直接以java -jar启动
 
 2. 如果要修改页面在哪修改
-答：在templates页面里修改，里面结构有不清楚的可以@me🙃
+答：在templates的index.html页面里修改
 
 3. web服务端入口在哪？
 答：服务端入口统一在EntranceController类，后期里面需要补充业务逻辑
+
+4. 用到了哪些技术
+答：前端页面展示：vue+element-ui，后端：spring-boot全家桶
 
