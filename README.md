@@ -13,7 +13,7 @@
 
 - 启动项目，`java -jar target/pro-low-complex-1.0-SNAPSHOT.jar`，启动后，访问：http://localhost:8085/index
 
-##FQ
+## FQ
 
 1. 如何在服务器上部署
 答：将jar包上传至服务器，直接以java -jar启动
