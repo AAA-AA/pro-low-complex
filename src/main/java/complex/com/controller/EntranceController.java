@@ -22,9 +22,10 @@ public class EntranceController {
 
     /**
      * 获取首页接口
+     *
      * @return
      */
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
@@ -33,6 +34,7 @@ public class EntranceController {
 
     /**
      * 上传文件接口, 业务逻辑 todo
+     *
      * @param file
      */
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -47,7 +49,7 @@ public class EntranceController {
     @RequestMapping(value = "/parameter", method = RequestMethod.POST)
     @ResponseBody
     public void parameter(@RequestBody ParameterDto parameterDto) {
-        log.info("receive parameterDto: {}",JSON.toJSONString(parameterDto));
+        log.info("receive parameterDto: {}", JSON.toJSONString(parameterDto));
 
     }
 
@@ -56,11 +58,8 @@ public class EntranceController {
         Map map = new HashMap();
         map.put("code", 0);
         map.put("data", "message");
-        return map  ;
+        return map;
     }
-
-
-
 
 
 }
