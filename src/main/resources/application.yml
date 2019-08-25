@@ -2,8 +2,6 @@ server:
   port: 8085
 
 
-
-
 spring:
   mvc:
     view:
@@ -19,13 +17,11 @@ spring:
   thymeleaf:
     cache: false
 
-
-
-
-
-
-
-
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
+
+# biz config
+# windows system should config like D:\\data\\complex
+py.file.savePath: /data/complex
+py.file.readFilePath: /data/complex/demo_with_param.py
