@@ -1,0 +1,31 @@
+server:
+  port: 8085
+
+
+
+
+spring:
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+
+  servlet:
+      multipart:
+        max-file-size: 50MB
+        max-request-size: 100MB
+
+
+  thymeleaf:
+    cache: false
+
+
+
+
+
+
+
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
