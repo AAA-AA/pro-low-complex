@@ -16,7 +16,7 @@
 
 - 启动项目，`java -jar target/pro-low-complex-1.0-SNAPSHOT.jar`，启动后，访问：http://localhost:8085/index
 
-## py脚本测试数据流向图
+## py脚本测试数据流向细节
 - 前端输入参数
 ![入口1](http://ww1.sinaimg.cn/large/662ea8e5gy1g6cscpzlbxj22r017wwj6.jpg)
 - 前端代码入口处
