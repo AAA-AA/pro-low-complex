@@ -18,6 +18,6 @@ public class Application {
         SpringApplication.run(Application.class, args);
         String port = SpringUtils.getProperty("server.port");
         String hostAddress = InetAddress.getLocalHost().getHostAddress();
-        log.info("测试接口页面访问地址: http://{}:{}/doc.html",hostAddress,port);
+        //log.info("测试接口页面访问地址: http://{}:{}/doc.html",hostAddress,port);
     }
 }

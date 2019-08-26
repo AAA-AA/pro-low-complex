@@ -16,6 +16,22 @@
 
 - 启动项目，`java -jar target/pro-low-complex-1.0-SNAPSHOT.jar`，启动后，访问：http://localhost:8085/index
 
+## py脚本测试数据流向图
+- 前端输入参数
+![入口1](http://ww1.sinaimg.cn/large/662ea8e5gy1g6cscpzlbxj22r017wwj6.jpg)
+- 前端代码入口处
+![前端代码入口1](http://ww1.sinaimg.cn/large/662ea8e5gy1g6csgyc9wrj226o0w8tig.jpg)
+![前端代码入口2](http://ww1.sinaimg.cn/large/662ea8e5gy1g6cshjj9uoj21sw0xg45s.jpg)
+- 后端接收入口
+![后端接收入口](http://ww1.sinaimg.cn/large/662ea8e5gy1g6csqyopesj21qs1jwh19.jpg)
+- py执行脚本
+![py执行脚本](http://ww1.sinaimg.cn/large/662ea8e5gy1g6csrbtxuqj228g1nsale.jpg)
+- 前端接收返回结果
+![前端接收返回结果](http://ww1.sinaimg.cn/large/662ea8e5gy1g6cstz5oxbj22581a0ak0.jpg)
+- 展示返回结果
+![](http://ww1.sinaimg.cn/large/662ea8e5gy1g6cssq2j0uj22ek10w77u.jpg)
+
+
 ## FQ
 
 1. 如何在服务器上部署
