@@ -1,0 +1,184 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>主页</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <el-container style="height: 700px; border: 1px solid #eee">
+        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+            <el-menu :default-openeds="['1', '3']">
+                <el-submenu index="1">
+                    <template slot="title"><i class="el-icon-setting"></i>管理</template>
+                    <el-menu-item-group>
+                        <el-menu-item index="1-1">操作界面</el-menu-item>
+                    </el-menu-item-group>
+                </el-submenu>
+            </el-menu>
+        </el-aside>
+
+        <el-container>
+            <el-header style="text-align: right; font-size: 12px">
+
+            </el-header>
+
+            <el-main>
+                <template>
+                    <el-tabs v-model="activeName" @tab-click="handleClick">
+                        <el-tab-pane label="上传文件" name="first">
+                            <el-upload
+                                    class="upload-demo"
+                                    drag
+                                    action="/upload"
+                                    multiple>
+                                <i class="el-icon-upload"></i>
+                                <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                                <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+                            </el-upload>
+                        </el-tab-pane>
+                        <el-tab-pane label="参数配置" name="second">
+                            <div class="custom-form-class">
+                                <el-form ref="form" :model="formData" label-width="80px">
+                                    <el-form-item label="活动名称">
+                                        <el-input v-model="formData.name"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="活动区域">
+                                        <el-select v-model="formData.region" placeholder="请选择活动区域">
+                                            <el-option label="区域一" value="shanghai"></el-option>
+                                            <el-option label="区域二" value="beijing"></el-option>
+                                        </el-select>
+                                    </el-form-item>
+                                    <el-form-item label="活动时间">
+                                        <el-col :span="11">
+                                            <el-date-picker type="datetime" placeholder="选择日期" v-model="formData.date1"
+                                                            style="width: 100%;"></el-date-picker>
+                                        </el-col>
+                                        <el-col class="line" :span="2">-</el-col>
+                                    </el-form-item>
+                                    <el-form-item label="即时配送">
+                                        <el-switch v-model="formData.delivery"></el-switch>
+                                    </el-form-item>
+                                    <el-form-item label="活动性质">
+                                        <el-checkbox-group v-model="formData.type">
+                                            <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
+                                            <el-checkbox label="地推活动" name="type"></el-checkbox>
+                                            <el-checkbox label="线下主题活动" name="type"></el-checkbox>
+                                            <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
+                                        </el-checkbox-group>
+                                    </el-form-item>
+                                    <el-form-item label="特殊资源">
+                                        <el-radio-group v-model="formData.resource">
+                                            <el-radio label="线上品牌商赞助"></el-radio>
+                                            <el-radio label="线下场地免费"></el-radio>
+                                        </el-radio-group>
+                                    </el-form-item>
+                                    <el-form-item label="活动形式">
+                                        <el-input type="textarea" v-model="formData.desc"></el-input>
+                                    </el-form-item>
+                                    <el-form-item>
+                                        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                                        <el-button>取消</el-button>
+                                    </el-form-item>
+                                </el-form>
+                            </div>
+                        </el-tab-pane>
+                        <el-tab-pane label="传参数调py脚本测试" name="third">
+                            <el-form :inline="true" class="demo-form-inline">
+                                <el-form-item label="参数值：">
+                                    <el-input v-model="paramDto.input" placeholder="请输入参数值"></el-input>
+                                </el-form-item>
+                                <el-form-item>
+                                    <el-button type="primary" @click="pyExec">执行</el-button>
+                                </el-form-item>
+                            </el-form>
+                            <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" :disabled="true" v-model="pyExecuteRs.output1"/>
+                        </el-tab-pane>
+
+                    </el-tabs>
+                </template>
+            </el-main>
+        </el-container>
+    </el-container>
+</div>
+
+</body>
+<style>
+
+    .el-aside {
+        color: #333;
+    }
+
+    .custom-form-class {
+        width: 600px;
+        height: auto;
+        padding: 24px;
+    }
+</style>
+
+<script>
+    axios.defaults.baseURL = '';
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                total: 0,
+                activeName: 'second',
+                formData: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                paramDto: {
+                    input: ''
+                },
+                pyExecuteRs: {
+                    output1: ''
+                },
+                tableData: []
+            }
+        },
+        create: function () {
+        },
+        methods: {
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
+            onSubmit() {
+                console.log('submit!');
+                axios.post('/parameter', this.formData)
+                    .then(res => {
+                        console.log(res);
+                        scope.tableData = res.data.data.list;
+                        scope.total = res.data.data.totalCount;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            pyExec() {
+                var resArr = [];
+                /**执行前清空*/
+                this.pyExecuteRs.output1=''
+                axios.post('/doPy', this.paramDto)
+                    .then(res => {
+                        console.log(res.data.length-1);
+                        res.data.forEach((item) => {
+                            resArr.push(item)
+                        })
+                        this.pyExecuteRs.output1=res.data[res.data.length-1];
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        }
+    })
+</script>
+</html>
