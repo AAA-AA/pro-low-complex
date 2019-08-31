@@ -24,4 +24,4 @@ spring:
 # biz config
 # windows system should config like D:\\data\\complex
 py.file.savePath: /data/complex
-py.file.readFilePath: /data/complex/demo_with_param.py
+py.file.readFilePath: /data/complex/py/demo_with_param.py

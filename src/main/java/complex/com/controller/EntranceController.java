@@ -1,8 +1,6 @@
 package complex.com.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
 import complex.com.domain.ParameterDto;
 import complex.com.domain.PyParamDto;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
+import javax.activation.MimetypesFileTypeMap;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,9 +49,18 @@ public class EntranceController {
         return mv;
     }
 
+    /**
+     * 类型为为text或者json
+     * @return
+     */
+    @RequestMapping(value = "/result/{type}", method = RequestMethod.POST)
+    public String getResult(@PathVariable String type) {
+        return "";
+    }
+
     @RequestMapping(value = "/doPy", method = RequestMethod.POST)
     @ResponseBody
-    public List<String> doPython(@RequestBody PyParamDto paramDto) {
+    public List<String> doPython(@RequestBody @Valid PyParamDto paramDto) {
         log.info("do py start");
         List<String> data = new ArrayList<>();
         if (StringUtils.isEmpty(readFilePath)) {
@@ -60,10 +68,9 @@ public class EntranceController {
             String resourcePath = this.getClass().getResource("/py/demo_with_param.py").getPath();
             readFilePath = resourcePath;
         }
-
         try {
             log.info("input filePath is: {}, param: {}", readFilePath, JSON.toJSONString(paramDto));
-            String[] args = new String[]{"python", readFilePath, "参数1", "参数2", paramDto == null ? "参数3" : JSON.toJSONString(paramDto)};
+            String[] args = new String[]{"python", readFilePath, paramDto == null ? "" : JSON.toJSONString(paramDto)};
             Process pr = Runtime.getRuntime().exec(args);
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             String line;
@@ -122,6 +129,41 @@ public class EntranceController {
         log.info("receive parameterDto: {}", JSON.toJSONString(parameterDto));
 
     }
+
+    @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*")
+    public void image(@PathVariable String imageName, HttpServletResponse response) {
+        if (StringUtils.isEmpty(imageName)) {
+            return;
+        }
+        ByteArrayOutputStream out = null;
+        try {
+            File file = new File(pyFileSavePath +"/image/" + imageName);
+            if (!file.exists()) {
+                log.error("文件不存在！");
+            }
+            out = new ByteArrayOutputStream();
+            BufferedImage bufferedImage = ImageIO.read(file);
+            ImageIO.write(bufferedImage, "png", out);
+            response.setContentType("image/png");// 设置response内容的类型
+            OutputStream os = response.getOutputStream();
+            os.write(out.toByteArray());
+            os.flush();
+            os.close();
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+
+            }
+        }
+    }
+
+
 
     @GetMapping("/helloWorld")
     public Map helloWorld() {
