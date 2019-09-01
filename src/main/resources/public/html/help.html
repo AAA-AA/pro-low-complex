@@ -1,0 +1,386 @@
+<!-- saved from url=(0029)https://iupred2a.elte.hu/help -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IUPred2A</title>
+    <meta name="GENERATOR" content="IUpred2a disorder prediction">
+    <link rel="shortcut icon" type="image/png" href="https://iupred2a.elte.hu/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./IUPred2A_files/style7.css">
+    <script type="text/javascript" src="./IUPred2A_files/jquery.min.js"></script>
+    <!--  scrolling, anchor links, sticky navbar -->
+    <link rel="stylesheet" type="text/css" href="./IUPred2A_files/navbar.css">    <!-- sticky navbar -->
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var $window = $(window);
+            var navPos = $('.nav_menu').offset().top; //Sticky navbar
+            $window.scroll(function () {
+                var scrollPos = $window.scrollTop();
+                var left = 0 - $window.scrollLeft();
+
+                if (scrollPos >= navPos) {
+                    $('.nav_menu').addClass('fixed').css('left', left + 'px');
+                } else {
+                    $('.nav_menu').removeClass('fixed').css('left', 0);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="1300">
+    <tbody><tr>
+        <td id="tr3" width="15%">
+            <a href="https://iupred2a.elte.hu/"><img src="./IUPred2A_files/iupred2a.png" border="0" align="right" height="112" width="180" alt="IMG not available"></a>
+        </td>
+        <td width="30"></td>
+    </tr>
+    <tr valign="bottom">
+        <td id="tr4"></td>
+        <td id="tr4"></td>
+        <td id="tr4" align="left" valign="bottom" height="30px">
+            <h2>Prediction of Intrinsically Unstructured Proteins</h2>
+        </td>
+        <td id="tr4"></td>
+    </tr>
+    <tr>
+        <td id="tr3" valign="top">
+            <div class="nav-container">
+
+                <div class="nav_menu">
+
+                    <br>
+                    <table width="100%" cellspacing="2" cellpadding="1">
+                        <tbody><tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;; " onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="./IUPred2A.html" class="side">IUPred2A</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="./help.html" class="side">How to use</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="./examples.html" class="side">Examples</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/new_features" class="side">New features</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/statistics" class="side">Statistics</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/links" class="side">Related links</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/download" class="side">Downloads</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="./IUPred2A_files/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;" onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="./IUPred2A_files/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/changelog" class="side">Changelog</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td bgcolor="#FFFFD1">
+                                <div style="color: midnightblue; text-align: center; font-weight: normal; font-family: Tahoma, sans-serif; font-size: 8pt; text-decoration:blink; font-style: italic; padding: 1px;">
+                                    NEW
+                                </div>
+                            </td>
+                            <td bgcolor="#4468AE">
+                                <div style="color: midnightblue; text-align: center; font-weight: normal; font-family: Tahoma, sans-serif; font-size: 9pt; text-decoration:blink; padding: 1px;">
+                                    <a href="https://dx.doi.org/10.1126/scisignal.aak9982" target="_blank">
+                                        Just published in Science Signaling: A review on Degrons in Cancer
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody><tr>
+                    <td>
+                        <h3> How to use<br></h3>
+                        <br><b>Basics
+                    </b>
+                        <p>
+                            The main aim of IUPred2 is to identify Intrinsically Disordered Protein Regions (IDPRs, i.e.
+                            regions that lack a stable monomeric structure under native
+                            conditions) based on a <a href="http://www.sciencedirect.com/science/article/pii/S0022283605001294" target="_blank">biophysics-based model</a>.
+                            The user can input any protein sequence and IUPred returns a score between 0 and 1 for each
+                            residue, corresponding to the probability of the given
+                            residue being part of a disordered region.<br><br>
+                            The disordered nature of a protein segment can be context dependent: certain protein regions
+                            can switch between an ordered and a disordered state
+                            depending on various environmental factors. Currently, the IUPred2A server is able to detect
+                            such context-dependent disorder in the case where the
+                            environmental factors are either a change in the redox state or the presence of an ordered
+                            binding partner (for more details see
+                            <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000376" target="_blank">here</a>).<br><br>
+                            The following sections outline the use of IUPred2A in various scenarios. For a list of
+                            select example runs highlighting various IUPred2A features,
+                            see the <a href="https://iupred2a.elte.hu/examples" target="_blank">Examples</a> section.<br>
+                        </p>
+                        <b>
+                            Protein sequence input
+                        </b>
+                        <p>
+                            There are three basic ways to input protein sequences into IUPred2A:<br><br>
+                            <b>I</b> - If the protein is deposited in the UniProt database (either in SwissProt or
+                            TrEMBL) you can specify the accession
+                            code or the ID of the protein in the <i>"Enter SWISS-PROT/TrEMBL identifier or accession
+                            number"</i> field. The IUPred2A server
+                            is always linked to newest version of UniProt. The header of the UniProt entry will be
+                            displayed as the title in the results page.<br>
+                            <b>II</b> - Type or cut and paste your sequence in the "paste the amino acid sequence"
+                            field.
+                            The amino acid sequence must be in the standard <a href="https://en.wikipedia.org/wiki/FASTA" target="_blank">FASTA
+                            format</a> or must be a plain sequence.
+                            Spaces and other non-standard
+                            characters within the pasted sequence are permitted, however they will be removed with the
+                            remaining sequence treated as a single
+                            continuous chain.<br>
+                            <b>III</b> - For analysis of a large number of sequences/full proteomes, users can upload
+                            their sequences in a single file adhering to
+                            the standard multiple FASTA file format criteria. In this case the output will be provided
+                            in text format via email.<br><br>
+                        </p>
+
+                        <b>
+                            Prediction type
+                        </b>
+
+                        <p>
+                            There are three different disorder prediction types offered, each using different parameters
+                            optimized for slightly different applications.
+                            These are: long disorder, short disorder, and structured domains.
+                            <br><br>
+
+                            <i>Long disorder (default option):</i><br>
+
+                            The main profile of IUPred2A is to predict global structural disorder that encompasses at
+                            least 30 consecutive residues of the protein. The
+                            <i>long</i> option is optimized for this task.
+                            <br><br>
+
+                            <i>Short disorder:</i><br>
+
+                            In this setting, IUPred2A uses a parameter set best suited for predicting short disordered
+                            regions, such as missing residues in the X-ray
+                            structure of an otherwise globular protein. For this application a smaller sequential
+                            neighbourhood of residues is considered for the
+                            calculation of the IUPred score. As chain termini of globular proteins are often disordered
+                            in X-ray structures, this is taken into account
+                            by an end-adjustment parameter which favors disorder prediction at the ends.
+                            <br><br>
+
+                            <i>Structured domains:</i><br>
+
+                            The reliable identification of ordered protein regions is a crucial step in target selection
+                            for structural studies and structural genomics
+                            projects. Finding putative structured domains suitable for structure determination is
+                            another potential application of IUPred2A. In this
+                            case the algorithm aims to find continuous regions confidently predicted ordered.
+                            Neighbouring regions close to each other are merged,
+                            while regions shorter than the minimal domain size of at least 30 residues are ignored. When
+                            this prediction type is selected, the region(s)
+                            predicted to correspond to structured/globular domains are returned.
+
+                            <br><br>
+                        </p>
+                        <b>
+                            Context-dependent predictions
+                        </b>
+                        <p>
+
+                            IDPRs often harbor binding regions that are able to specifically interact with a globular
+                            domain. During this interaction, in the majority
+                            of known cases, the binding disordered region adopts an ordered structure in its bound form.
+                            This is probably the most commonly occurring
+                            context-dependent protein disorder, where the transition between the unstructured and the
+                            structured states is initiated by the presence of
+                            an appropriate protein partner. Such disordered binding regions are identified using the
+                            ANCHOR2 prediction algorithm. Similarly to IUPred2, ANCHOR2
+                            also assigns to each residue a score between 0 and 1, representing the probability of the
+                            given residue to be part of a disordered binding region.
+                            Selecting ANCHOR2 as a prediction option, the ANCHOR2 score is provided along with the
+                            IUPred
+                            score.<br>
+                            Another known context-dependent behaviour of IDPRs is the change between a folded and an
+                            unfolded state as a result of a change in the redox state. Such protein regions can be
+                            ordered or disordered depending on their localization in/outside the cell. Upon selecting
+                            this option, IUPred2A marks such redox-sensitive protein regions, and also shows their
+                            maximal and minimal predicted disorder tendencies.
+                            <br><br>
+
+                        </p>
+
+                        <b>
+                            Output
+                        </b>
+
+                        <p>
+                            <i>Basic features:</i><br>
+
+                            The primary output of IUPred2A is a graph showing the disorder tendency of each residue in
+                            the given protein, where higher values correspond
+                            to a higher probability of disorder. The graph is scalable and can be directly downloaded
+                            for presentation/publication purposes. The list of
+                            position-specific disorder scores is also downloadable in simple text or JSON
+                            format.<br><br><br>
+
+                            <i>Extended features:</i><br>
+
+                            If the prediction was run by specifying a UniProt ID/accession, the output of IUPred2A also
+                            shows additional protein annotations, including
+                            <a href="http://pfam.xfam.org/" target="_blank">Pfam</a> regions; post-translational
+                            modifications (PTMs), including phosphorylations (upper line),
+                            methylations and acetylations (lower line) taken from <a href="https://www.phosphosite.org/" target="_blank">PhosphoSitePlus</a>;
+                            corresponding structures
+                            from the <a href="http://www.rcsb.org/" target="_blank">PDB</a>; and regions that were
+                            experimentally verified to be disordered, taken from
+                            <a href="http://www.disprot.org/" target="_blank">DisProt</a>, <a href="http://dibs.enzim.ttk.mta.hu/" target="_blank">DIBS</a>, and
+                            <a href="http://mfib.enzim.ttk.mta.hu/" target="_blank">MFIB</a>.<br><br>
+                            If context-dependent predictions were selected, the output graph and the downloadable
+                            results incorporate additional data as well.<br>
+                            In case of disordered binding region prediction via ANCHOR2, the graph shows the probability
+                            of each residue being part of a binding region in blue.
+                            The presence or absence of the IUPred2 and ANCHOR2 scores are switchable by clicking on the
+                            legend.<br>
+                            If redox state-dependent predictions were enabled, the ranges of possible disorder
+                            tendencies for redox- sensitive regions of the query protein are marked in purple.
+                            <br><br>
+                        </p>
+
+                        <b>
+                            REST API
+                        </b><br>
+
+                        <p>
+                            IUPred2A is also accessible via REST API to enable automated/large scale use. Requests
+                            should be input following the syntax:<br><br>
+                            http://iupred2a.elte.hu/iupred2a/::accession::<br><br>
+                            or<br><br>
+                            http://iupred2a.elte.hu/iupred2a/::iupred_type::/::accession::<br><br>
+
+                            In case ::iupred_type:: is not given, the default "long" will be used.
+                            If the requested URL ends with ".json" the output
+                            will be JSON type, in any other case it will be simple text.
+                            <br><br>
+                            Examples:<br>
+                            <a href="http://iupred2a.elte.hu/iupred2a/q32p44" target="_blank">http://iupred2a.elte.hu/iupred2a/q32p44</a><br>
+                            <a href="http://iupred2a.elte.hu/iupred2a/q32p44.json" target="_blank">http://iupred2a.elte.hu/iupred2a/q32p44.json</a><br>
+                            <a href="http://iupred2a.elte.hu/iupred2a/short/q32p44" target="_blank">http://iupred2a.elte.hu/iupred2a/short/q32p44</a><br>
+                            <br><br>
+                        </p>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr><tr>
+        <td id="tr3"></td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody><tr>
+                    <td align="left" valign="top">
+                        <hr size="6" style="background-color: #37316a">
+                        <h3>References:</h3>
+                        Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi <br>
+			IUPred2A: context-dependent prediction of protein disorder as a function of redox state and
+                        protein binding <br>
+                        Nucleic Acids Research 2018;<b>46(W1)</b>:W329-W337.<br><br>
+
+                        Zsuzsanna Dosztányi<br>
+                        Prediction of protein disorder based on IUPred <br>
+                        Protein Science 2017;<b>27</b>:331-340.<br><br>
+
+                        Dosztányi Z, Csizmók V, Tompa P, Simon I.<br>
+                        The pairwise energy content estimated from amino acid composition discriminates between fol$
+                        and intrinsically unstructured proteins.<br>
+                        J Mol Biol. 2005;<b>347</b>:827-39.<br>
+                        <br>
+                        Mészáros B, Simon I, Dosztányi Z.<br>
+                        Prediction of protein binding regions in disordered proteins.<br>
+                        PLoS Comput Biol. 2009;<b>5</b>:e1000376.<br>
+
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr valign="bottom">
+        <td colspan="4" id="tr4"> &nbsp;</td>
+    </tr>
+    <tr valign="bottom">
+        <td colspan="4">
+            <div style="color: midnightblue;
+                        text-align: center;
+                        font-weight: normal;
+                        padding: 1px;">
+                <a style="font-weight: normal;" href="http://dosztanyi.web.elte.hu/" target="_blank">Zsuzsanna
+                    Dosztanyi</a> |
+                <a style="font-weight: normal;" href="http://www.dlab.elte.hu/" target="_blank">Balint Meszaros</a> |
+                <a style="font-weight: normal;" href="http://gerdos.web.elte.hu/" target="_blank">Gabor Erdos</a> |
+                <a style="font-weight: normal;" href="http://www.dlab.elte.hu/" target="_blank">MTA-ELTE Momentum
+                    Bioinformatics Research Group</a>
+            </div>
+        </td>
+    </tr>
+</tbody></table>
+
+
+
+</body></html>
