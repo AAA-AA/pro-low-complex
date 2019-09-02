@@ -1,0 +1,25 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IUPred2A</title>
+    <meta name="GENERATOR" content="IUpred2a disorder prediction">
+    <link rel="shortcut icon" type="image/png" href="https://iupred2a.elte.hu/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/style7.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!--  scrolling, anchor links, sticky navbar -->
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css">    <!-- sticky navbar -->
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var $window = $(window);
+            var navPos = $('.nav_menu').offset().top; //Sticky navbar
+            $window.scroll(function () {
+                var scrollPos = $window.scrollTop();
+                var left = 0 - $window.scrollLeft();
+                if (scrollPos >= navPos) {
+                    $('.nav_menu').addClass('fixed').css('left', left + 'px');
+                } else {
+                    $('.nav_menu').removeClass('fixed').css('left', 0);
+                }
+            });
+        });
+    </script>
+</head>

@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- saved from url=(0030)https://iupred2a.elte.hu/links -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IUPred2A</title>
+    <meta name="GENERATOR" content="IUpred2a disorder prediction">
+    <link rel="shortcut icon" type="image/png" href="https://iupred2a.elte.hu/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/style7.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!--  scrolling, anchor links, sticky navbar -->
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css">    <!-- sticky navbar -->
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var $window = $(window);
+            var navPos = $('.nav_menu').offset().top; //Sticky navbar
+            $window.scroll(function () {
+                var scrollPos = $window.scrollTop();
+                var left = 0 - $window.scrollLeft();
+                if (scrollPos >= navPos) {
+                    $('.nav_menu').addClass('fixed').css('left', left + 'px');
+                } else {
+                    $('.nav_menu').removeClass('fixed').css('left', 0);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="1300">
+    <tbody>
+    <tr>
+        <td id="tr3" width="15%">
+            <a href="https://iupred2a.elte.hu/"><img src="../image/iupred2a.png" border="0" align="right" height="112"
+                                                     width="180" alt="IMG not available"></a>
+        </td>
+        <td width="30"></td>
+    </tr>
+    <tr valign="bottom">
+        <td id="tr4"></td>
+        <td id="tr4"></td>
+        <td id="tr4" align="left" valign="bottom" height="30px">
+            <h2>Prediction of Intrinsically Unstructured Proteins</h2>
+        </td>
+        <td id="tr4"></td>
+    </tr>
+    <tr>
+        <td id="tr3" valign="top">
+            <div class="nav-container">
+                <div class="nav_menu">
+                    <br>
+                    <table width="100%" cellspacing="2" cellpadding="1">
+                        <tbody>
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;; "
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <!--访问的是接口-->
+                                <a href="/copy_index" class="side">IUPred2A</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/help.html" class="side">How to use</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="examples.html" class="side">Examples</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/new_features" class="side">New features</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/statistics.html" class="side">Statistics</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/links.html" class="side">Related links</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/download" class="side">Downloads</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/changelog.html" class="side">Changelog</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td bgcolor="#FFFFD1">
+                                <div style="color: midnightblue; text-align: center; font-weight: normal; font-family: Tahoma, sans-serif; font-size: 8pt; text-decoration:blink; font-style: italic; padding: 1px;">
+                                    NEW
+                                </div>
+                            </td>
+                            <td bgcolor="#4468AE">
+                                <div style="color: midnightblue; text-align: center; font-weight: normal; font-family: Tahoma, sans-serif; font-size: 9pt; text-decoration:blink; padding: 1px;">
+                                    <a href="https://dx.doi.org/10.1126/scisignal.aak9982" target="_blank">
+                                        Just published in Science Signaling: A review on Degrons in Cancer
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+        </td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody>
+                <tr>
+                    <td align="left" valign="top" style="text-align: justify;">
+                        <table width="100%">
+                            <tbody>
+                            <tr id="tr2">
+                                <td colspan="2">
+                                    <h3>Servers for the prediction of protein disorder, unstructured regions<br></h3>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="https://iupred2a.elte.hu/">IUPred</a>
+                                </td>
+                                <td>
+                                    <a href="http://dx.doi.org/10.1016/j.jmb.2005.01.071" target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://biomine.cs.vcu.edu/servers/MFDp2/" target="_blank">MFDp2</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.tandfonline.com/doi/abs/10.4161/idp.24428" target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://protein.bio.unipd.it/espritz/" target="_blank">Espritz</a>
+                                </td>
+                                <td>
+                                    <a href="https://academic.oup.com/bioinformatics/article/28/4/503/211681"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://bioinf.cs.ucl.ac.uk/disopred/" target="_blank">DISOPRED3</a>
+                                </td>
+                                <td>
+                                    <a href="https://www.ncbi.nlm.nih.gov/pubmed/25391399" target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.ist.temple.edu/disprot/predictorVSL2.php" target="_blank">DisProt
+                                        VSL2</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16618368"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.disprot.org/pondr-fit.php" target="_blank">PONDR-FIT</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=20100603"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.pondr.com/" target="_blank">PONDR</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=11093259"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.reading.ac.uk/bioinf/DISOclust/DISOclust_form.html"
+                                       target="_blank">DISOclust</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=18579567"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://babel.ucmp.umu.se/ond-crf/" target="_blank">OnD-CRF</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=18430742"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://globplot.embl.de/" target="_blank">GlobPlot</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=12824398"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://dis.embl.de/" target="_blank">DisEMBL</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=14604535"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.softberry.com/berry.phtml?topic=pdisorder&amp;group=programs&amp;subgroup=propt"
+                                       target="_blank">SoftBerry
+                                        - pdisorder</a>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://bioportal.weizmann.ac.il/fldbin/findex" target="_blank">FoldIndex-Uversky</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15955783"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.strubi.ox.ac.uk/RONN" target="_blank">RONN Disorder
+                                        Prediction</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=15947016"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://protein.cribi.unipd.it/spritz/" target="_blank">CSPRITZ</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=21646342"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.predictprotein.org/" target="_blank">PredictProtein</a> <br>
+                                    NORSp, UCON, MD
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=19209228"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.ist.temple.edu/disprot/predictor.php" target="_blank">DisProt
+                                        VL2</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12910457&amp;dopt=Abstract"
+                                       target="_blank">
+                                        Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://www.ist.temple.edu/disprot/predictor.php" target="_blank">DisProt
+                                        VL3, VL3H,
+                                        VL3E</a>
+                                </td>
+                                <td>
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=14579347&amp;dopt=Abstract"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br><br>
+                        <table width="100%">
+                            <tbody>
+                            <tr id="tr2">
+                                <td colspan="2">
+                                    <h3>Servers for the prediction of binding regions<br></h3>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://biomine.cs.vcu.edu/servers/MoRFpred/" target="_blank">MoRFpred</a>
+                                </td>
+                                <td>
+                                    <a href="https://academic.oup.com/bioinformatics/article/28/12/i75/267832"
+                                       target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://gsponerlab.msl.ubc.ca/software/morf_chibi/" target="_blank">MoRFchibi</a>
+                                </td>
+                                <td>
+                                    <a href="https://academic.oup.com/nar/article/44/W1/W488/2499374" target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://bioinf.cs.ucl.ac.uk/disopred/" target="_blank">DISOPRED3</a>
+                                </td>
+                                <td>
+                                    <a href="https://www.ncbi.nlm.nih.gov/pubmed/25391399" target="_blank">Abstract</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br><br>
+                        <table width="100%">
+                            <tbody>
+                            <tr id="tr1">
+                                <td>
+                                    <a href="http://gerdos.web.elte.hu/iupred2a/">All datasets used for training and
+                                        testing</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br><br>
+                        <table width="100%">
+                            <tbody>
+                            <tr id="tr2">
+                                <td>
+                                    <h3> Reviews<br></h3>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>Dosztányi Z, Mészáros B, Simon I. <br> Bioinformatical approaches to characterize
+                                    intrinsically disordered/unstructured proteins. <br>
+                                    Brief Bioinform. 2010; 11:225-243. <br> PubMed PMID:
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=20007729">20007729 </a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    He B, Wang K, Liu Y, Xue B, Uversky VN, Dunker AK. <br> Predicting intrinsic
+                                    disorder in proteins: an overview. <br> Cell Res. 2009;19:929-949.
+                                    <br> PubMed PMID:
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=19597536">19597536</a>
+                                </td>
+                            </tr>
+                            <tr id="tr1">
+                                <td>
+                                    Ferron F, Longhi S, Canard B, Karlin D. <br> A practical overview of protein
+                                    disorder prediction methods. <br> Proteins. 2006 ;65:1-14
+                                    <br> PubMed PMID:
+                                    <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=pubmed&amp;dopt=Abstract&amp;list_uids=16856179">16856179</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td id="tr3"></td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody>
+                <tr>
+                    <td align="left" valign="top">
+                        <hr size="6" style="background-color: #37316a">
+                        <h3>References:</h3>
+                        Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi <br>
+                        IUPred2A: context-dependent prediction of protein disorder as a function of redox state and
+                        protein binding <br>
+                        Nucleic Acids Research 2018;<b>46(W1)</b>:W329-W337.<br><br>
+
+                        Zsuzsanna Dosztányi<br>
+                        Prediction of protein disorder based on IUPred <br>
+                        Protein Science 2017;<b>27</b>:331-340.<br><br>
+
+                        Dosztányi Z, Csizmók V, Tompa P, Simon I.<br>
+                        The pairwise energy content estimated from amino acid composition discriminates between fol$
+                        and intrinsically unstructured proteins.<br>
+                        J Mol Biol. 2005;<b>347</b>:827-39.<br>
+                        <br>
+                        Mészáros B, Simon I, Dosztányi Z.<br>
+                        Prediction of protein binding regions in disordered proteins.<br>
+                        PLoS Comput Biol. 2009;<b>5</b>:e1000376.<br>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr valign="bottom">
+        <td colspan="4" id="tr4"> &nbsp;</td>
+    </tr>
+    <tr valign="bottom">
+        <td colspan="4">
+            <div style="color: midnightblue;
+                        text-align: center;
+                        font-weight: normal;
+                        padding: 1px;">
+                <a style="font-weight: normal;" href="http://dosztanyi.web.elte.hu/" target="_blank">Zsuzsanna
+                    Dosztanyi</a> |
+                <a style="font-weight: normal;" href="http://www.dlab.elte.hu/" target="_blank">Balint Meszaros</a> |
+                <a style="font-weight: normal;" href="http://gerdos.web.elte.hu/" target="_blank">Gabor Erdos</a> |
+                <a style="font-weight: normal;" href="http://www.dlab.elte.hu/" target="_blank">MTA-ELTE Momentum
+                    Bioinformatics Research Group</a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
