@@ -1,6 +1,7 @@
 package complex.com.controller;
 
 import com.alibaba.fastjson.JSON;
+import complex.com.domain.FormDto;
 import complex.com.domain.ParameterDto;
 import complex.com.domain.PyParamDto;
 import lombok.extern.slf4j.Slf4j;
@@ -61,6 +62,13 @@ public class EntranceController {
      */
     @RequestMapping(value = "/result/{type}", method = RequestMethod.POST)
     public String getResult(@PathVariable String type) {
+        return "";
+    }
+
+    @RequestMapping(value = "/submitForm", method = RequestMethod.POST)
+    @ResponseBody
+    public String submitForm(FormDto formDto) {
+        log.info("receive param: {}", JSON.toJSONString(formDto));
         return "";
     }
 

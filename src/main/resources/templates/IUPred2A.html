@@ -47,7 +47,8 @@
             document.getElementById('newpost').style.visibility = "visible";
         }
     </script>
-    <style>#newpost {
+    <style>
+        #newpost {
         width: 100%;
         height: 100%;
         padding-left: 0px;
@@ -237,8 +238,9 @@
         <td></td>
         <td>
             <br>
-            <form action="https://iupred2a.elte.hu/plot" method="post" enctype="multipart/form-data"><input
-                    type="hidden" name="csrfmiddlewaretoken"
+            <form action="/submitForm" method="post" enctype="multipart/form-data">
+                <input
+                    type="hidden" name="csrfToken"
                     value="kWw81FNiKi8JhffwywguWeWr05EwqIIHtVm9zweEB9wENPPYkitUC7UWrMedLeQW">
 
                 <table border="0" width="850" align="left">
@@ -249,8 +251,7 @@
                                 <legend style="color: #000099">Protein Sequence</legend>
                                 <br>
                                 <i>Enter SWISS-PROT/TrEMBL identifier or accession number:</i><br>
-                                <input title="accession" type="text" id="accession" name="accession"
-                                       class="registerTextDetails" maxlength="20" value="">
+                                <input title="accession" type="text" id="accession" name="accession" class="registerTextDetails" maxlength="20" value="">
                                 <br>
                                 <br>
                                 <i>or paste the amino acid sequence:</i>
@@ -258,40 +259,29 @@
                                 <textarea title="input_seq" id="inp_seq" name="inp_seq" rows="4" cols="80"></textarea>
 
                                 <a href="https://iupred2a.elte.hu/help"><img
-                                        src="../../../../../../../../未命名文件夹/IUPred2A_files/questionmarksmaller2.png"
+                                        src="../image/questionmarksmaller2.png"
                                         width="20" height="20" alt=""></a><br>
                                 <br><i>or provide your email address and upload a (multi)FASTA file (max 1MB):</i><br>
                                 Email: &nbsp;
-                                <input title="" type="text" id="email" name="email" class="registerTextDetails"
-                                       maxlength="120">
-                                &nbsp;&nbsp;<input type="file" name="myfile">
+                                <input title="" type="text" id="email" name="email" class="registerTextDetails" maxlength="120">&nbsp;&nbsp;<input type="file" name="file">
                             </fieldset>
                         </td>
                     </tr>
                     <tr id="tr1">
                         <td id="tr1" colspan="2">
                             <fieldset>
-                                <legend style="color: #000099">Prediction type:</legend>
-                                <label><input title="iupred2" type="radio" name="iupred_type" id="a_type" value="long"
+                                <legend style="color: #000099">ComplexType type:</legend>
+                                <label><input title="iupred2" type="radio" name="complexType" id="a_type" value="1"
                                               checked="">
                                     IUPred2 long disorder (default)</label><br>
-                                <label><input title="iupred_short" type="radio" name="iupred_type" id="a_type"
-                                              value="short">
+                                <label><input title="iupred_short" type="radio" name="complexType"
+                                              value="2">
                                     IUPred2 short disorder</label><br>
-                                <label><input title="iupred_glob" type="radio" name="iupred_type" id="a_type"
-                                              value="glob">
+                                <label><input title="iupred_glob" type="radio" name="complexType"
+                                              value="3">
                                     IUPred2 structured domains</label><br>
-                                <label><input title="context_dep" type="checkbox" name="context_checker" value="true"
-                                              checked="">Context-dependent
-                                    predictions:</label><br>
-
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <label><input title="anchor" type="radio" name="context" value="anchor" checked="">
-                                    ANCHOR2</label><br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <label><input title="redox" type="radio" name="context" value="redox"> Redox
-                                    state
-                                    (experimental)</label><br>
+                                <label><input title="context_dep" type="number" name="slideWindow" min="4" max="8">slideWindow</label><br>
+                                <label><input type="text" name="threshold">Threshold</label><br>
 
                             </fieldset>
                         </td>
