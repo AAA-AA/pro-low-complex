@@ -1,6 +1,7 @@
 package complex.com.controller;
 
 import com.alibaba.fastjson.JSON;
+import complex.com.domain.FormDto;
 import complex.com.domain.ParameterDto;
 import complex.com.domain.PyParamDto;
 import lombok.extern.slf4j.Slf4j;
@@ -62,6 +63,14 @@ public class EntranceController {
     @RequestMapping(value = "/result/{type}", method = RequestMethod.POST)
     public String getResult(@PathVariable String type) {
         return "";
+    }
+
+    @RequestMapping(value = "/submitForm", method = RequestMethod.POST)
+    public String submitForm(FormDto formDto) {
+        //提交的请求会在这
+        log.info("receive param: {}", JSON.toJSONString(formDto));
+        //把之前doPy的逻辑可以移过来，然后得新增一个返回页面，譬如result.html，注意，返回的页面要包含执行结果的呈现，这块要重新写，我来就行
+        return "result";
     }
 
     @RequestMapping(value = "/doPy", method = RequestMethod.POST)
