@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<!-- saved from url=(0034)https://iupred2a.elte.hu/changelog -->
+<!-- saved from url=(0037)https://iupred2a.elte.hu/new_features -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>PPDRH</title>
-    <meta name="GENERATOR" content="PPDRH disorder prediction">
+    <title>IUPred2A</title>
+    <meta name="GENERATOR" content="IUpred2a disorder prediction">
     <link rel="shortcut icon" type="image/png" href="https://iupred2a.elte.hu/static/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/style7.css">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -17,7 +16,6 @@
             $window.scroll(function () {
                 var scrollPos = $window.scrollTop();
                 var left = 0 - $window.scrollLeft();
-
                 if (scrollPos >= navPos) {
                     $('.nav_menu').addClass('fixed').css('left', left + 'px');
                 } else {
@@ -26,17 +24,14 @@
             });
         });
     </script>
-    <script charset="utf-8" src="chrome-extension://ffbnaibchmeoeglpjahiegilahgfcggm/js/btype.js"></script>
-    <script type="text/javascript" charset="utf-8"
-            src="chrome-extension://ffbnaibchmeoeglpjahiegilahgfcggm/js/chrome.js"></script>
 </head>
 <body>
 <table border="0" cellpadding="0" cellspacing="0" width="1300">
     <tbody>
     <tr>
         <td id="tr3" width="15%">
-            <a href="https://iupred2a.elte.hu/"><img src="../image/iupred2a.png" border="0" align="right" height="112"
-                                                     width="180" alt="IMG not available"></a>
+            <a href="https://iupred2a.elte.hu/"><img src="./new-features_files/iupred2a.png" border="0" align="right"
+                                                     height="112" width="180" alt="IMG not available"></a>
         </td>
         <td width="30"></td>
     </tr>
@@ -171,59 +166,56 @@
                 <tbody>
                 <tr>
                     <td align="left" valign="top" style="text-align: justify;">
-                        <h3>Changelog</h3>
-                        <div style="font-weight: bold">2018 Dec 17</div>
-                        <ul>
-                            <li style="font-weight: bold">Major ANCHOR2 rework</li>
-                            <ul>
-                                <li>Reverted the change introduced at Jul 13, ANCHOR2 now produces identical output to
-                                    original publication
-                                </li>
-                            </ul>
-                            <li style="font-weight: bold">Major REDOX prediction rework</li>
-                            <ul>
-                                <li>Redox prediction was changed in multiple ways. For details see:
-                                    <div style="font-style: italic">Large-scale analysis of redox-sensitive
-                                        conditionally
-                                        disordered protein regions reveals their widespread nature
-                                        and key roles in high-level eukaryotic processes
-                                        <div>Gabor Erdos, Balint Meszaros, Dana Reichmann, Zsuzsanna Dosztanyi</div>
-                                        PROTEOMICS, in press
-                                    </div>
-                                </li>
-                                <li>Added an option to Download page to download the Redox predictor</li>
-                            </ul>
-                        </ul>
-                        <div style="font-weight: bold">2018 Sep 3</div>
-                        <ul>
-                            <li>Fixed a bug about glob mode producing errors when no globular region is found</li>
-                        </ul>
-                        <div style="font-weight: bold">2018 Jul 13</div>
-                        <ul>
-                            <li style="font-weight: bold">Major ANCHOR2 rework</li>
-                            <ul>
-                                <li>Removed the IUPred2 smoothing step from ANCHOR2</li>
-                            </ul>
-                            <li>Lowercase amino acid sequence input is now processed correctly</li>
-                        </ul>
-
-                        <div style="font-weight: bold">2018 Jul 10</div>
-                        <ul>
-                            <li>Fixed a bug when text based output was not displaying the given protein</li>
-
-                        </ul>
-                        <div style="font-weight: bold">2018 Jun 12</div>
-                        <ul>
-                            <li>Fixed a bug when REST interface was not producing output</li>
-
+                        <ul style="list-style-type:disc">
+                            <li>Introducing IUPred2, implementing minor bug fixes</li>
+                            <li>Introducing the new ANCHOR2 based on an improved architecture</li>
+                            <li>Introducing an additional context dependence disorder prediction depending on redox
+                                states
+                            </li>
+                            <li>Improved web interface (based on PYTHON Django) with more interactive visualization</li>
+                            <li>Improved integration with the UniProt database with Restful access added</li>
+                            <li>Providing new json output in addition to the graphical and text output</li>
+                            <li>Improved multi-download submission page; additional download option in PYTHON</li>
                         </ul>
                     </td>
                 </tr>
-
                 </tbody>
             </table>
         </td>
+    </tr>
+    <tr>
+        <td id="tr3"></td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody>
+                <tr>
+                    <td align="left" valign="top">
+                        <hr size="6" style="background-color: #37316a">
+                        <h3>References:</h3>
+                        Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi <br>
+                        IUPred2A: context-dependent prediction of protein disorder as a function of redox state and
+                        protein binding <br>
+                        Nucleic Acids Research 2018;<b>46(W1)</b>:W329-W337.<br><br>
 
+                        Zsuzsanna Dosztányi<br>
+                        Prediction of protein disorder based on IUPred <br>
+                        Protein Science 2017;<b>27</b>:331-340.<br><br>
+
+                        Dosztányi Z, Csizmók V, Tompa P, Simon I.<br>
+                        The pairwise energy content estimated from amino acid composition discriminates between fol$
+                        and intrinsically unstructured proteins.<br>
+                        J Mol Biol. 2005;<b>347</b>:827-39.<br>
+                        <br>
+                        Mészáros B, Simon I, Dosztányi Z.<br>
+                        Prediction of protein binding regions in disordered proteins.<br>
+                        PLoS Comput Biol. 2009;<b>5</b>:e1000376.<br>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
     </tr>
     <tr valign="bottom">
         <td colspan="4" id="tr4"> &nbsp;</td>

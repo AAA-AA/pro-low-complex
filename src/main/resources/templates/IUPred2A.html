@@ -15,8 +15,8 @@
         gtag('js', new Date());
         gtag('config', 'UA-137467421-1');
     </script>
-    <title>IUPred2A</title>
-    <meta name="GENERATOR" content="IUpred2a disorder prediction">
+    <title>PPDRA</title>
+    <meta name="GENERATOR" content="PPDRA disorder prediction">
     <link rel="shortcut icon" type="image/png" href="https://iupred2a.elte.hu/static/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/style7.css">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -90,7 +90,8 @@
                             <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;; "
                                 onmouseout="this.bgColor=&#39;#4468AE&#39;;">
                                 <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
-                                <a href="../../templates/IUPred2A.html" class="side">IUPred2A</a>
+                                <!--访问的是接口-->
+                                <a href="/copy_index" class="side">IUPred2A</a>
                             </td>
                         </tr>
 
@@ -123,7 +124,7 @@
                             <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
                                 onmouseout="this.bgColor=&#39;#4468AE&#39;;">
                                 <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
-                                <a href="https://iupred2a.elte.hu/new_features" class="side">New features</a>
+                                <a href="../html/features.html" class="side">New features</a>
                             </td>
                         </tr>
 
@@ -156,7 +157,7 @@
                             <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
                                 onmouseout="this.bgColor=&#39;#4468AE&#39;;">
                                 <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
-                                <a href="https://iupred2a.elte.hu/download" class="side">Downloads</a>
+                                <a href="../html/download.html" class="side">Downloads</a>
                             </td>
                         </tr>
 
@@ -190,6 +191,7 @@
                     <div class="clear"></div>
                 </div>
             </div>
+
         </td>
         <td></td>
         <td>
@@ -201,21 +203,21 @@
 
                         Intrinsically disordered proteins (IDPs) have no single well-defined tertiary structure
                         under native
-                        conditions. IUPred2A is a combined web interface that allows to identify disordered
+                        conditions. PPDRA is a combined web interface that allows to identify disordered
                         protein
                         regions
-                        using IUPred2 and disordered binding regions using ANCHOR2. IUPred2A is also capable of
+                        using PPDRA and disordered binding regions using ANCHOR2. PPDRA2 is also capable of
                         identifying
                         protein regions that do or do not adopt a stable structure depending on the redox state
                         of
                         their
-                        environment. IUPred2A supersedes the previous
+                        environment. PPDRA supersedes the previous
                         <a href="http://iupred.elte.hu/" target="_blank">IUPred</a> and
                         <a href="http://anchor.elte.hu/" target="_blank">ANCHOR</a> servers. For new features
-                        included in IUPred2A, see the <a href="https://iupred2a.elte.hu/new_features">New features</a>
+                        included in PPDRA2, see the <a href="https://iupred2a.elte.hu/new_features">New features</a>
                         section.
                         <br><br>
-                        For a detailed description of how to run IUPred2A using various features and how to
+                        For a detailed description of how to run PPDRA using various features and how to
                         interpret the output,
                         see the<a href="https://iupred2a.elte.hu/help"> How to use</a> and
                         <a href="https://iupred2a.elte.hu/examples">Examples sections</a>. For a simple demonstration of
@@ -237,7 +239,7 @@
         <td></td>
         <td>
             <br>
-            <form action="https://iupred2a.elte.hu/plot" method="post" enctype="multipart/form-data"><input
+            <form action="/doPy" method="post" enctype="multipart/form-data"><input
                     type="hidden" name="csrfmiddlewaretoken"
                     value="kWw81FNiKi8JhffwywguWeWr05EwqIIHtVm9zweEB9wENPPYkitUC7UWrMedLeQW">
 
@@ -258,7 +260,7 @@
                                 <textarea title="input_seq" id="inp_seq" name="inp_seq" rows="4" cols="80"></textarea>
 
                                 <a href="https://iupred2a.elte.hu/help"><img
-                                        src="../../../../../../../../未命名文件夹/IUPred2A_files/questionmarksmaller2.png"
+                                        src="../image/questionmarksmaller2.png"
                                         width="20" height="20" alt=""></a><br>
                                 <br><i>or provide your email address and upload a (multi)FASTA file (max 1MB):</i><br>
                                 Email: &nbsp;
@@ -274,13 +276,13 @@
                                 <legend style="color: #000099">Prediction type:</legend>
                                 <label><input title="iupred2" type="radio" name="iupred_type" id="a_type" value="long"
                                               checked="">
-                                    IUPred2 long disorder (default)</label><br>
+                                    factor complexity(default)</label><br>
                                 <label><input title="iupred_short" type="radio" name="iupred_type" id="a_type"
                                               value="short">
-                                    IUPred2 short disorder</label><br>
+                                    abelian complexity</label><br>
                                 <label><input title="iupred_glob" type="radio" name="iupred_type" id="a_type"
                                               value="glob">
-                                    IUPred2 structured domains</label><br>
+                                    factor and abelian complexity</label><br>
                                 <label><input title="context_dep" type="checkbox" name="context_checker" value="true"
                                               checked="">Context-dependent
                                     predictions:</label><br>
@@ -321,7 +323,7 @@
                     <td><h3>Sample:</h3></td>
                 </tr>
                 <tr>
-                    <td>For a demonstration on how to run IUPred2A with ANCHOR2 binding site prediction on <a
+                    <td>For a demonstration on how to run PPDRA with ANCHOR2 binding site prediction on <a
                             href="http://www.uniprot.org/uniprot/P04637" target="_blank">human
                         p53
                         protein</a>
