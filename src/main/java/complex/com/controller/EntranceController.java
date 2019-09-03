@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -46,6 +45,13 @@ public class EntranceController {
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
+        return mv;
+    }
+
+    @RequestMapping(value = "/copy_index", method = RequestMethod.GET)
+    public ModelAndView examples() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("IUPred2A");
         return mv;
     }
 
@@ -130,7 +136,7 @@ public class EntranceController {
 
     }
 
-    @RequestMapping(value = "/image/{imageName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/innerImage/{imageName}", method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
     public void image(@PathVariable String imageName, HttpServletResponse response) {
         if (StringUtils.isEmpty(imageName)) {

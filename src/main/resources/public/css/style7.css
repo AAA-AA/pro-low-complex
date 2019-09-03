@@ -1,0 +1,148 @@
+BODY {
+    background-color: #D6E4FF;
+    font-weight: bold;
+    color: midnightblue;
+}
+
+H1 {
+    color: #FFFFFF;
+    font-family: Verdana;
+}
+
+H2 {
+    color: #FF6600;
+    font-family: Tahoma;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 1.5;
+    letter-spacing: 1.1px;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+H3 {
+    color: midnightblue;
+    font-family: Tahoma;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+img {
+    border-style: none;
+}
+
+#tr1 {
+    background-color: #A0BBF0;
+    color: #000099;
+}
+
+#tr2 {
+    background-color: #A0BBF0;
+    color: #FFFFFF;
+}
+
+#tb1 {
+    background-color: #FFFFD1;
+    color: midnightblue;
+    font-family: arial;
+}
+
+#tb2 {
+    background-color: #FFFEEE;
+    color: midnightblue;
+    font-family: arial;
+
+}
+
+#td1 {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+#td2 {
+    font-family: 'arial';
+    font-size: 12pt;
+    font-style: bold;
+    color: midnightblue;
+}
+
+#tr3 {
+    font-family: 'arial';
+    font-size: 12pt;
+    font-style: bold;
+    color: #000000;
+    background-color: #b9d5ff;
+}
+
+#tr4 {
+    font-family: 'arial';
+    font-size: 12pt;
+    font-style: bold;
+    color: #FF6600;
+    background-color: #37316a;;
+}
+
+fieldset {
+    padding-left: 50px;
+    border-right: white 1px inset;
+    border-bottom: white 1px inset;
+    border-top: white 1px outset;
+    border-left: white 1px outset;
+}
+
+legend {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+PRE {
+    font-family: 'Monospac821 BT', 'Courier New', Courier;
+    font-size: 10pt;
+}
+
+p {
+    font-size: 12pt;
+    font-family: arial;
+    line-height: 1.5;
+    color: midnightblue;
+    text-align: justify;
+}
+
+p.side {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: ' Tahoma';
+    font-size: 10pt;
+}
+
+a.side {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: ' Tahoma';
+    font-size: 12pt;
+}
+
+p.sidetr {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: ' Tahoma';
+    font-size: 10pt;
+    background-color: #FFFFD1;
+}
+
+a {
+    color: midnightblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+}
+

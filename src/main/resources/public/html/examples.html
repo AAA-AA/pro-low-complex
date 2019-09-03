@@ -1,0 +1,375 @@
+<!-- saved from url=(0033)https://iupred2a.elte.hu/examples -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IUPred2A</title>
+    <meta name="GENERATOR" content="IUpred2a disorder prediction">
+    <link rel="shortcut icon" type="image/png" href="https://iupred2a.elte.hu/static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/style7.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!--  scrolling, anchor links, sticky navbar -->
+    <link rel="stylesheet" type="text/css" href="../css/navbar.css">    <!-- sticky navbar -->
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var $window = $(window);
+            var navPos = $('.nav_menu').offset().top; //Sticky navbar
+            $window.scroll(function () {
+                var scrollPos = $window.scrollTop();
+                var left = 0 - $window.scrollLeft();
+                if (scrollPos >= navPos) {
+                    $('.nav_menu').addClass('fixed').css('left', left + 'px');
+                } else {
+                    $('.nav_menu').removeClass('fixed').css('left', 0);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="1300">
+    <tbody>
+    <tr>
+        <td id="tr3" width="15%">
+            <a href="https://iupred2a.elte.hu/"><img src="../image/iupred2a.png" border="0" align="right" height="112"
+                                                     width="180" alt="IMG not available"></a>
+        </td>
+        <td width="30"></td>
+    </tr>
+    <tr valign="bottom">
+        <td id="tr4"></td>
+        <td id="tr4"></td>
+        <td id="tr4" align="left" valign="bottom" height="30px">
+            <h2>Prediction of Intrinsically Unstructured Proteins</h2>
+        </td>
+        <td id="tr4"></td>
+    </tr>
+    <tr>
+        <td id="tr3" valign="top">
+            <div class="nav-container">
+                <div class="nav_menu">
+                    <br>
+                    <table width="100%" cellspacing="2" cellpadding="1">
+                        <tbody>
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;; "
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <!--访问的是接口-->
+                                <a href="/copy_index" class="side">IUPred2A</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/help.html" class="side">How to use</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="examples.html" class="side">Examples</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/features.html" class="side">New features</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/statistics.html" class="side">Statistics</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/links.html" class="side">Related links</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="https://iupred2a.elte.hu/download" class="side">Downloads</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="20" height="14" bgcolor="#A0BBF0">
+                                <img src="../image/s.gif" width="25" height="14" alt="IMG not available">
+                            </td>
+                            <td bgcolor="#4468AE" onmouseover="this.bgColor=&#39;#37316a&#39;;"
+                                onmouseout="this.bgColor=&#39;#4468AE&#39;;">
+                                <img src="../image/s.gif" width="4" height="1" alt="IMG not available">
+                                <a href="../html/changelog.html" class="side">Changelog</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td bgcolor="#FFFFD1">
+                                <div style="color: midnightblue; text-align: center; font-weight: normal; font-family: Tahoma, sans-serif; font-size: 8pt; text-decoration:blink; font-style: italic; padding: 1px;">
+                                    NEW
+                                </div>
+                            </td>
+                            <td bgcolor="#4468AE">
+                                <div style="color: midnightblue; text-align: center; font-weight: normal; font-family: Tahoma, sans-serif; font-size: 9pt; text-decoration:blink; padding: 1px;">
+                                    <a href="https://dx.doi.org/10.1126/scisignal.aak9982" target="_blank">
+                                        Just published in Science Signaling: A review on Degrons in Cancer
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+        </td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody>
+                <tr>
+                    <td align="left" valign="top" style="text-align: justify;">
+                        <h3>Examples</h3>
+                        <br>
+                        <p>
+                            The following examples highlight the functionality of IUPred2A in the identification of
+                            various forms of protein disorder.
+                            All figures are reproducible using IUPred2A by simply entering the given UniProt ID and
+                            selecting the corresponding options.
+                        </p>
+                        <br>
+
+                        <b>Human p53 (UniProt ID: <a href="http://www.uniprot.org/uniprot/P04637"
+                                                     target="_blank">P04637</a>)</b>
+                        <br><br>
+                        <img src="../image/p53.png" alt="Human p53" width="900">
+                        <br>
+                        <p>
+                            p53 is a tumor suppressor protein involved in apoptosis, cell cycle control and
+                            transcription regulation. It
+                            consists of the disordered N-terminal and C-terminal parts and the central largely ordered
+                            DNA binding domain.<br>
+                            The N- and C-terminal parts contain the trans-activation and the tetramerization motifs,
+                            respectively, each with
+                            its own Pfam motif. The structure of the central DNA binding domain (DBD) was determined
+                            both in isolation and bound to
+                            DNA as well. However, the disordered regions also incorporate a large number of solved
+                            structures from the PDB, but
+                            since these regions do not have a stable structure on their own, their structures can only
+                            be determined when bound
+                            to some molecular partner.<br>
+                            The disorder prediction score in red correctly highlights the ordered nature of the DBD and
+                            the disordered nature of both
+                            termini. Both the N- and the C-terminal binding motifs display reduced disorder tendency,
+                            which is a characteristic feature
+                            of protein-interacting disordered binding sites.
+                        </p>
+                        <br>
+
+                        <b>Cytochrome c oxidase copper chaperone (UniProt ID: <a
+                                href="http://www.uniprot.org/uniprot/Q14061" target="_blank">Q14061</a>)</b>
+                        <br><br>
+                        <img src="../image/COX17.png" alt="COX17" width="900">
+                        <br>
+                        <p>
+                            COX17 is a critically important subunit of the human cytochrome c oxidase. COX17 is a
+                            cystein-rich protein, and the redox
+                            state of these cysteine residues (and hence their role in protein stability) is highly
+                            dependent on the sub-cellular localization
+                            of the protein. Upon entring the oxidative environment of the mitochondrium, COX17 undergoes
+                            a disorder-to-order transition,
+                            forming a stable coiled-coil/helix/coiled-coil/helix structure (see <a
+                                href="https://www.ncbi.nlm.nih.gov/pubmed/18093982" target="_blank">Banci et
+                            al.</a>)<br>
+                            The redox state-dependent conditional disorder of COX17 can be correctly predicted with the
+                            new, redox state-dependent prediction
+                            of IUPred2A. IUPred2A correctly shows the redox sensitive region.
+                        </p>
+                        <br>
+
+                        <b>E. coli 33 kDa chaperonin (Hsp33) (UniProt ID: <a
+                                href="http://www.uniprot.org/uniprot/P0A6Y5" target="_blank">P0A6Y5</a>)</b>
+                        <br><br>
+                        <img src="../image/HSP33.png" alt="COX17" width="900">
+                        <br>
+                        <p>
+                            Hsp33 belongs to the holdase class of molecular chaperones. The activity of Hsp33 depends on
+                            oxidative conditions, however, for this protein the functional state is disordered. Under
+                            non-stress conditions, Hsp33 is a compactly folded zinc-binding protein with negligible
+                            activity. Oxidative stress causes the formation of two intramolecular disulfide bonds and
+                            the release of Zn2+ ions. This leads to the unfolding of the zinc-binding domain, exposing
+                            the substrate binding surface of the chaperone that is necessary for its activity.<br>
+                            The redox switch domain between residues 224-285 is correctly highlighted by the
+                            redox-dependent disorder prediction of IUPred2A.
+                        </p>
+                        <br>
+
+                        <b>Early E1A protein (UniProt ID: <a href="http://www.uniprot.org/uniprot/P03255"
+                                                             target="_blank">P03255</a>)</b>
+                        <br><br>
+                        <img src="../image/e1a_adenovirus.png" alt="E1A" width="900">
+                        <br>
+                        <p>
+                            Human adenovirus C early E1A protein is a largely disordered protein essential for forcing
+                            the human
+                            host cell into S phase via modulation of the Rb1/E2F1 pathway and the inhibition of
+                            apoptosis via
+                            modulation of p53 degradation. These host-pathogen interactions are mediated by several
+                            binding events.
+                            Rb1 and CBP are targeted by two N-terminal tandem binding sites with determined complex
+                            structures
+                            deposited in the PDB, shown in green and red boxes. These known disordered binding regions
+                            are
+
+                            identified by ANCHOR2 as two distinct neighbouring peaks in the output score. While no other
+                            E1A-
+                            human protein complexes are currently known in structural detail, E1A harbors two additional
+                            known
+
+                            motifs between residues 113-126 capable of forming host-specific interactions. Both motifs,
+                            together with
+                            the putative binding site for the deubiquitinase UBE2I between residues 76-140 are correctly
+                            recognized
+                            by ANCHOR2 as a separate peak in the prediction score. A distinct peak C-terminal around
+                            residue 220
+                            has no known binding partners; however it entails a serine residue that was shown
+                            <a href="https://www.ncbi.nlm.nih.gov/pubmed/2966155" target="_blank"> to be heavily
+                                phosphorylated by host kinases</a>, hinting at an
+                            additional important binding region with currently limited characterization.
+                        </p>
+                        <br>
+
+                        <b>p27/Cyclin-dependent kinase inhibitor 1B (UniProt ID: <a
+                                href="http://www.uniprot.org/uniprot/P46527" target="_blank">P46527</a>)</b>
+                        <br><br>
+                        <img src="../image/p27.png" alt="p27" width="900">
+                        <br>
+                        <p>
+                            p27 is one of the major regulators of cell cycle progression, being an inhibitor of the
+                            CDK2/cyclinA complex. p27 is fully disordered and
+                            binds to the target complex using a large extended interface harboring several strongly
+                            binding regions interspersed with weak binding linkers.<br>
+                            The graph shows the region of p27 that becomes ordered during the interaction. ANCHOR not
+                            only predicts correctly the binding event, but it
+                            is also able to pinpoint the strongly binding regions with the provided ANCHOR score having
+                            a strong correclation with the number of intermolecular
+                            atomic contacts (see <a
+                                href="http://journals.plos.org/ploscompbiol/article/figure?id=10.1371/journal.pcbi.1000376.g006"
+                                target="_blank">Meszaros et
+                            al.</a>).
+                        </p>
+                        <br>
+
+                        <b>Hemoglobin subunit alpha (UniProt ID: <a href="http://www.uniprot.org/uniprot/P69905"
+                                                                    target="_blank">P69905</a>)</b>
+                        <br><br>
+                        <img src="../image/hemoglobin.png" alt="Hemoglobin subunit alpha" width="900">
+                        <br>
+                        <p>
+                            Hemoglobin subunits are globular proteins, lacking disordered regions and thus lacking
+                            disordered
+                            binding regions as well. The figure shows that both the IUPred2 prediction (red line) and
+                            ANCHOR2
+                            predictions (blue line) are consistent with this fact, predicting no disorder or disordered
+                            binding regions in
+                            the protein.</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td id="tr3"></td>
+        <td></td>
+        <td>
+            <table cellpadding="20px" width="850">
+                <tbody>
+                <tr>
+                    <td align="left" valign="top">
+                        <hr size="6" style="background-color: #37316a">
+                        <h3>References:</h3>
+                        Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi <br>
+                        IUPred2A: context-dependent prediction of protein disorder as a function of redox state and
+                        protein binding <br>
+                        Nucleic Acids Research 2018;<b>46(W1)</b>:W329-W337.<br><br>
+
+                        Zsuzsanna Dosztányi<br>
+                        Prediction of protein disorder based on IUPred <br>
+                        Protein Science 2017;<b>27</b>:331-340.<br><br>
+
+                        Dosztányi Z, Csizmók V, Tompa P, Simon I.<br>
+                        The pairwise energy content estimated from amino acid composition discriminates between fol$
+                        and intrinsically unstructured proteins.<br>
+                        J Mol Biol. 2005;<b>347</b>:827-39.<br>
+                        <br>
+                        Mészáros B, Simon I, Dosztányi Z.<br>
+                        Prediction of protein binding regions in disordered proteins.<br>
+                        PLoS Comput Biol. 2009;<b>5</b>:e1000376.<br>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr valign="bottom">
+        <td colspan="4" id="tr4"> &nbsp;</td>
+    </tr>
+    <tr valign="bottom">
+        <td colspan="4">
+            <div style="color: midnightblue;
+                        text-align: center;
+                        font-weight: normal;
+                        padding: 1px;">
+                <a style="font-weight: normal;" href="http://dosztanyi.web.elte.hu/" target="_blank">Zsuzsanna
+                    Dosztanyi</a> |
+                <a style="font-weight: normal;" href="http://www.dlab.elte.hu/" target="_blank">Balint Meszaros</a> |
+                <a style="font-weight: normal;" href="http://gerdos.web.elte.hu/" target="_blank">Gabor Erdos</a> |
+                <a style="font-weight: normal;" href="http://www.dlab.elte.hu/" target="_blank">MTA-ELTE Momentum
+                    Bioinformatics Research Group</a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
