@@ -31,162 +31,174 @@ import java.util.Map;
 @Slf4j
 public class EntranceController {
 
-    @Value("${py.file.savePath}")
-    private String pyFileSavePath;
+	@Value("${py.file.savePath}")
+	private String pyFileSavePath;
 
-    @Value("${py.file.readFilePath}")
-    private String readFilePath;
+	@Value("${py.file.readFilePath}")
+	private String readFilePath;
 
-    /**
-     * 获取首页接口
-     *
-     * @return
-     */
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("index");
-        return mv;
-    }
+	/**
+	 * 获取首页接口
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index");
+		return mv;
+	}
 
-    @RequestMapping(value = "/copy_index", method = RequestMethod.GET)
-    public ModelAndView examples() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("IUPred2A");
-        return mv;
-    }
+	@RequestMapping(value = "/copy_index", method = RequestMethod.GET)
+	public ModelAndView examples() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("IUPred2A");
+		return mv;
+	}
 
-    /**
-     * 类型为为text或者json
-     * @return
-     */
-    @RequestMapping(value = "/result/{type}", method = RequestMethod.POST)
-    public String getResult(@PathVariable String type) {
-        return "";
-    }
+	/**
+	 * 类型为为text或者json
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/{resourceId}/{type}", method = RequestMethod.POST)
+	@ResponseBody
+	public String getResult(@PathVariable String type) {
+		if (type.contains("json")) {
+			log.info("download with json");
+		} else {
+			log.info("download with raw");
+		}
+		return "";
+	}
 
-    @RequestMapping(value = "/submitForm", method = RequestMethod.POST)
-    public String submitForm(FormDto formDto) {
-        //提交的请求会在这
-        log.info("receive param: {}", JSON.toJSONString(formDto));
-        //把之前doPy的逻辑可以移过来，然后得新增一个返回页面，譬如result.html，注意，返回的页面要包含执行结果的呈现，这块要重新写，我来就行
-        return "result";
-    }
-
-    @RequestMapping(value = "/doPy", method = RequestMethod.POST)
-    @ResponseBody
-    public List<String> doPython(@RequestBody @Valid PyParamDto paramDto) {
-        log.info("do py start");
-        List<String> data = new ArrayList<>();
-        if (StringUtils.isEmpty(readFilePath)) {
-            log.info("py has't config, use py directory files");
-            String resourcePath = this.getClass().getResource("/py/demo_with_param.py").getPath();
-            readFilePath = resourcePath;
-        }
-        try {
-            log.info("input filePath is: {}, param: {}", readFilePath, JSON.toJSONString(paramDto));
-            String[] args = new String[]{"python", readFilePath, paramDto == null ? "" : JSON.toJSONString(paramDto)};
-            Process pr = Runtime.getRuntime().exec(args);
-            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            String line;
-            while ((line = in.readLine()) != null) {
-                //此处读取的是py脚本执行时print的值
-                log.info("py execute result: {}", line);
-                data.add(line);
-            }
-            in.close();
-            pr.waitFor();
-        } catch (IOException e) {
-            log.error("doPython error", e);
-        } catch (InterruptedException e) {
-            log.error("doPython error", e);
-        }
-        log.info("end");
-        return data;
-    }
-
-    /**
-     * 上传文件接口, 业务逻辑 todo
-     *
-     * @param file
-     */
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    @ResponseBody
-    public void upload(@RequestParam("file") MultipartFile file) {
-        log.info("upload file: {}", JSON.toJSONString(file.getOriginalFilename()));
-        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
-        if (suffix.equals("py")) {
-            try {
-                // todo window 下目录结构为\\
-                File parentDr = new File(pyFileSavePath);
-                if (!parentDr.exists()) {
-                    parentDr.mkdirs();
-                }
-                File moveFile = new File(pyFileSavePath + "/" + file.getOriginalFilename());
-                if (!moveFile.exists()) {
-                    moveFile.createNewFile();
-                }
-                file.transferTo(moveFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+	@RequestMapping(value = "/submitForm", method = RequestMethod.POST)
+	public ModelAndView submitForm(FormDto formDto) {
+		log.info("receive param: {}", JSON.toJSONString(formDto));
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("imageSrc", "/innerImage/" + "demo.png");
+		mv.addObject("rawAddress","/rawFileName");
+		mv.addObject("jsonAddress","/jsonFileName");
+		mv.setViewName("plot");
+		//提交的请求会在这
 
 
-    }
+		return mv;
+	}
 
-    /**
-     * 参数设置接口, 业务逻辑 todo
-     */
-    @RequestMapping(value = "/parameter", method = RequestMethod.POST)
-    @ResponseBody
-    public void parameter(@RequestBody ParameterDto parameterDto) {
-        log.info("receive parameterDto: {}", JSON.toJSONString(parameterDto));
+	@RequestMapping(value = "/doPy", method = RequestMethod.POST)
+	@ResponseBody
+	public List<String> doPython(@RequestBody @Valid PyParamDto paramDto) {
+		log.info("do py start");
+		List<String> data = new ArrayList<>();
+		if (StringUtils.isEmpty(readFilePath)) {
+			log.info("py has't config, use py directory files");
+			String resourcePath = this.getClass().getResource("/py/demo_with_param.py").getPath();
+			readFilePath = resourcePath;
+		}
+		try {
+			log.info("input filePath is: {}, param: {}", readFilePath, JSON.toJSONString(paramDto));
+			String[] args = new String[]{"python", readFilePath, paramDto == null ? "" : JSON.toJSONString(paramDto)};
+			Process pr = Runtime.getRuntime().exec(args);
+			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				//此处读取的是py脚本执行时print的值
+				log.info("py execute result: {}", line);
+				data.add(line);
+			}
+			in.close();
+			pr.waitFor();
+		} catch (IOException e) {
+			log.error("doPython error", e);
+		} catch (InterruptedException e) {
+			log.error("doPython error", e);
+		}
+		log.info("end");
+		return data;
+	}
 
-    }
-
-    @RequestMapping(value = "/innerImage/{imageName}", method = RequestMethod.GET)
-    @CrossOrigin(origins = "*")
-    public void image(@PathVariable String imageName, HttpServletResponse response) {
-        if (StringUtils.isEmpty(imageName)) {
-            return;
-        }
-        ByteArrayOutputStream out = null;
-        try {
-            File file = new File(pyFileSavePath +"/image/" + imageName);
-            if (!file.exists()) {
-                log.error("文件不存在！");
-            }
-            out = new ByteArrayOutputStream();
-            BufferedImage bufferedImage = ImageIO.read(file);
-            ImageIO.write(bufferedImage, "png", out);
-            response.setContentType("image/png");// 设置response内容的类型
-            OutputStream os = response.getOutputStream();
-            os.write(out.toByteArray());
-            os.flush();
-            os.close();
-        } catch (IOException e) {
-            log.error(e.getMessage(), e);
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-            } catch (IOException e) {
-
-            }
-        }
-    }
+	/**
+	 * 上传文件接口, 业务逻辑 todo
+	 *
+	 * @param file
+	 */
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@ResponseBody
+	public void upload(@RequestParam("file") MultipartFile file) {
+		log.info("upload file: {}", JSON.toJSONString(file.getOriginalFilename()));
+		String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
+		if (suffix.equals("py")) {
+			try {
+				// todo window 下目录结构为\\
+				File parentDr = new File(pyFileSavePath);
+				if (!parentDr.exists()) {
+					parentDr.mkdirs();
+				}
+				File moveFile = new File(pyFileSavePath + "/" + file.getOriginalFilename());
+				if (!moveFile.exists()) {
+					moveFile.createNewFile();
+				}
+				file.transferTo(moveFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 
+	}
 
-    @GetMapping("/helloWorld")
-    public Map helloWorld() {
-        Map map = new HashMap();
-        map.put("code", 0);
-        map.put("data", "message");
-        return map;
-    }
+	/**
+	 * 参数设置接口, 业务逻辑 todo
+	 */
+	@RequestMapping(value = "/parameter", method = RequestMethod.POST)
+	@ResponseBody
+	public void parameter(@RequestBody ParameterDto parameterDto) {
+		log.info("receive parameterDto: {}", JSON.toJSONString(parameterDto));
+
+	}
+
+	@RequestMapping(value = "/innerImage/{imageName}", method = RequestMethod.GET)
+	@CrossOrigin(origins = "*")
+	public void image(@PathVariable String imageName, HttpServletResponse response) {
+		if (StringUtils.isEmpty(imageName)) {
+			return;
+		}
+		ByteArrayOutputStream out = null;
+		try {
+			File file = new File(pyFileSavePath + "/image/" + imageName);
+			if (!file.exists()) {
+				log.error("文件不存在！");
+			}
+			out = new ByteArrayOutputStream();
+			BufferedImage bufferedImage = ImageIO.read(file);
+			ImageIO.write(bufferedImage, "png", out);
+			response.setContentType("image/png");// 设置response内容的类型
+			OutputStream os = response.getOutputStream();
+			os.write(out.toByteArray());
+			os.flush();
+			os.close();
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+			} catch (IOException e) {
+
+			}
+		}
+	}
+
+
+	@GetMapping("/helloWorld")
+	public Map helloWorld() {
+		Map map = new HashMap();
+		map.put("code", 0);
+		map.put("data", "message");
+		return map;
+	}
 
 
 }
