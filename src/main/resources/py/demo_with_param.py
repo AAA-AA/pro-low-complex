@@ -197,7 +197,7 @@
  	test_seq = "ATWTTTTTTTTBVCODUHOOFEOUHHHHD"
  	#print(Model_type,s_window,threshold)
  	Predict_label= Predict_result_from_seq(test_seq,Model_type,s_window,threshold)
- 	np.save('pred_results.txt',Predict_label)
+ 	#np.save('pred_results.txt',Predict_label)
  	#print(Predict_label)
  	#print(model_name)
  	print("pred_results.txt")

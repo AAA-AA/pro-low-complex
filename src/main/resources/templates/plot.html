@@ -172,11 +172,11 @@
 
                         <div id="load" style="visibility: hidden;"></div>
                         <div id="contents" style="visibility: visible;">
-                            <img th:src="/innerImage/${imageSrc}"/>
+                            <img th:src="${imageSrc}"/>
                         </div>
 
                         <br>
-                        <form th:action="/result/${resourceKey}" method="post" style="float: left;"
+                        <form th:action="${resourceKey}" method="post" style="float: left;"
                               target="_blank"><input type="hidden" name="csrfmiddlewaretoken"
                                                      value="2cgioE3kOvVGjcyAHhl31qGoXG1hrprDXA8AWaWoVtJH3GXTJ4JAD2v6QCMTt9rB"><input
                                 type="submit" value="Download text"></form>

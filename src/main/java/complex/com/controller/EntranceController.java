@@ -114,20 +114,21 @@ public class EntranceController {
 				//此处读取的是py脚本执行时print的值
 				log.info("py execute result: {}", line);
 				data.add(line);
-				in.close();
-				pr.waitFor();
 			}
+			in.close();
+			pr.waitFor();
 		} catch (IOException e) {
 			log.error("doPython error", e);
 		} catch (InterruptedException e) {
 			log.error("doPython error", e);
 		}
+		//没有获取到py的执行结果，你先不执行py逻辑，直接返回图片和txt文件试试
 		String key = UUID.randomUUID().toString();
 		cache.put(key,readTxt(data.get(0)));
 
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("imageSrc", data.get(1));
-		mv.addObject("resourceKey", key);
+		mv.addObject("imageSrc","/innerImage/"+ data.get(1));
+		mv.addObject("resourceKey","/result/"+ key);
 		mv.setViewName("plot");
 		//提交的请求会在这
 		return mv;
@@ -219,7 +220,7 @@ public class EntranceController {
 		}
 		ByteArrayOutputStream out = null;
 		try {
-			File file = new File(fileSavePath + "/image/" + imageName);
+			File file = new File(fileSavePath + "/results/" + imageName);
 			if (!file.exists()) {
 				log.error("文件不存在！");
 			}
