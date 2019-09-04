@@ -1,12 +1,15 @@
 package complex.com.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.base.Charsets;
 import complex.com.domain.FormDto;
 import complex.com.domain.ParameterDto;
 import complex.com.domain.PyParamDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,10 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author : hongqiangren.
@@ -32,10 +33,14 @@ import java.util.Map;
 public class EntranceController {
 
 	@Value("${py.file.savePath}")
-	private String pyFileSavePath;
+	private String fileSavePath;
 
 	@Value("${py.file.readFilePath}")
 	private String readFilePath;
+
+	private static Map<String, String> cache = new ConcurrentHashMap<>();
+
+	private static final Integer MAX_SIZE = 100 * 100 * 100;
 
 	/**
 	 * 获取首页接口
@@ -61,29 +66,87 @@ public class EntranceController {
 	 *
 	 * @return
 	 */
-	@RequestMapping(value = "/{resourceId}/{type}", method = RequestMethod.POST)
+	@RequestMapping(value = "/result/{resourceKey}", method = RequestMethod.POST)
 	@ResponseBody
-	public String getResult(@PathVariable String type) {
-		if (type.contains("json")) {
-			log.info("download with json");
-		} else {
-			log.info("download with raw");
+	public String getResult(@PathVariable String resourceKey) {
+		if (StringUtils.isEmpty(resourceKey)) {
+			log.error("resourceKey can't be null");
+			return "error";
 		}
-		return "";
+		if (cache.size() > MAX_SIZE) {
+			cache.clear();
+			log.info("reach it't max save!");
+			return "try from first again";
+		}
+		String result = cache.get(resourceKey);
+		if (StringUtils.isEmpty(result)) {
+			log.info("can't find corresponding result");
+			return "empty";
+		}
+		return result;
 	}
 
 	@RequestMapping(value = "/submitForm", method = RequestMethod.POST)
-	public ModelAndView submitForm(FormDto formDto) {
+	public ModelAndView submitForm(FormDto formDto) throws IOException {
 		log.info("receive param: {}", JSON.toJSONString(formDto));
+		String filePath = fileSavePath;
+		String fileName = formDto.getFile().getOriginalFilename();
+		File dest = new File(filePath + fileName);
+		try {
+			formDto.getFile().transferTo(dest);
+			log.info("transfer file success, target dir: {}", dest.getAbsolutePath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		;
+		List<String> data = new ArrayList<>();
+		if (StringUtils.isEmpty(readFilePath)) {
+			log.info("py has't config, use py directory files");
+			readFilePath = this.getClass().getResource("/py/Model_Predict.py").getPath();
+		}
+		try {
+			log.info("input filePath is: {}, param: {}", readFilePath, JSON.toJSONString(formDto));
+			String[] args = new String[]{"python", readFilePath, formDto == null ? "" : JSON.toJSONString(formDto)};
+			Process pr = Runtime.getRuntime().exec(args);
+			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+			String line;
+			while ((line = in.readLine()) != null) {
+				//此处读取的是py脚本执行时print的值
+				log.info("py execute result: {}", line);
+				data.add(line);
+				in.close();
+				pr.waitFor();
+			}
+		} catch (IOException e) {
+			log.error("doPython error", e);
+		} catch (InterruptedException e) {
+			log.error("doPython error", e);
+		}
+		String key = UUID.randomUUID().toString();
+		cache.put(key,readTxt(data.get(0)));
+
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("imageSrc", "/innerImage/" + "demo.png");
-		mv.addObject("rawAddress","/rawFileName");
-		mv.addObject("jsonAddress","/jsonFileName");
+		mv.addObject("imageSrc", data.get(1));
+		mv.addObject("resourceKey", key);
 		mv.setViewName("plot");
 		//提交的请求会在这
-
-
 		return mv;
+	}
+
+	private String readTxt(String txtFilePath) throws IOException {
+		String result = "";
+		String[] extensions = {"txt"};
+		Collection<File> files = FileUtils.listFiles(new File(fileSavePath), extensions, true);
+		if (CollectionUtils.isEmpty(files)) {
+			throw new RuntimeException("can't not find any file with " + fileSavePath);
+		}
+		for (File file : files) {
+			if (file.getName().equals(txtFilePath)) {
+				byte[] bytes = FileUtils.readFileToByteArray(file);
+				result = new String(bytes, Charsets.UTF_8.name());
+			}
+		}
+		return result;
 	}
 
 	@RequestMapping(value = "/doPy", method = RequestMethod.POST)
@@ -131,11 +194,11 @@ public class EntranceController {
 		if (suffix.equals("py")) {
 			try {
 				// todo window 下目录结构为\\
-				File parentDr = new File(pyFileSavePath);
+				File parentDr = new File(fileSavePath);
 				if (!parentDr.exists()) {
 					parentDr.mkdirs();
 				}
-				File moveFile = new File(pyFileSavePath + "/" + file.getOriginalFilename());
+				File moveFile = new File(fileSavePath + "/" + file.getOriginalFilename());
 				if (!moveFile.exists()) {
 					moveFile.createNewFile();
 				}
@@ -148,16 +211,6 @@ public class EntranceController {
 
 	}
 
-	/**
-	 * 参数设置接口, 业务逻辑 todo
-	 */
-	@RequestMapping(value = "/parameter", method = RequestMethod.POST)
-	@ResponseBody
-	public void parameter(@RequestBody ParameterDto parameterDto) {
-		log.info("receive parameterDto: {}", JSON.toJSONString(parameterDto));
-
-	}
-
 	@RequestMapping(value = "/innerImage/{imageName}", method = RequestMethod.GET)
 	@CrossOrigin(origins = "*")
 	public void image(@PathVariable String imageName, HttpServletResponse response) {
@@ -166,7 +219,7 @@ public class EntranceController {
 		}
 		ByteArrayOutputStream out = null;
 		try {
-			File file = new File(pyFileSavePath + "/image/" + imageName);
+			File file = new File(fileSavePath + "/image/" + imageName);
 			if (!file.exists()) {
 				log.error("文件不存在！");
 			}
@@ -190,15 +243,5 @@ public class EntranceController {
 			}
 		}
 	}
-
-
-	@GetMapping("/helloWorld")
-	public Map helloWorld() {
-		Map map = new HashMap();
-		map.put("code", 0);
-		map.put("data", "message");
-		return map;
-	}
-
 
 }

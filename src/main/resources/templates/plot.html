@@ -172,18 +172,18 @@
 
                         <div id="load" style="visibility: hidden;"></div>
                         <div id="contents" style="visibility: visible;">
-                            <img th:src="${imageSrc}"/>
+                            <img th:src="/innerImage/${imageSrc}"/>
                         </div>
 
                         <br>
-                        <form th:action="${rawAddress}" method="post" style="float: left;"
+                        <form th:action="/result/${resourceKey}" method="post" style="float: left;"
                               target="_blank"><input type="hidden" name="csrfmiddlewaretoken"
                                                      value="2cgioE3kOvVGjcyAHhl31qGoXG1hrprDXA8AWaWoVtJH3GXTJ4JAD2v6QCMTt9rB"><input
                                 type="submit" value="Download text"></form>
-                        <form th:action="${jsonAddress}" method="post" style="float: right;"
+                       <!-- <form th:action="${jsonAddress}" method="post" style="float: right;"
                               target="_blank"><input type="hidden" name="csrfmiddlewaretoken"
                                                      value="2cgioE3kOvVGjcyAHhl31qGoXG1hrprDXA8AWaWoVtJH3GXTJ4JAD2v6QCMTt9rB"><input
-                                type="submit" value="Download JSON"></form>
+                                type="submit" value="Download JSON"></form>-->
                     </td>
                 </tr>
                 </tbody>
