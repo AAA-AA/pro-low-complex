@@ -68,9 +68,44 @@ public class EntranceController {
     @RequestMapping(value = "/submitForm", method = RequestMethod.POST)
     public String submitForm(FormDto formDto) {
         //提交的请求会在这
-        log.info("receive param: {}", JSON.toJSONString(formDto));
+        log.info("do py start");
+        String filePath = pyFileSavePath;
+        String fileName = formDto.getFile().getOriginalFilename();
+        File dest = new File(filePath + fileName);
+        try {
+            formDto.getFile().transferTo(dest);
+            log.info("succeed upload");
+            return "succeed upload";
+        } catch (IOException e) {
+            e.printStackTrace();
+        } ;
+        List<String> data = new ArrayList<>();
+        if (StringUtils.isEmpty(readFilePath)) {
+            log.info("py has't config, use py directory files");
+            readFilePath = this.getClass().getResource("/py/Model_Predict.py").getPath();
+        }
+
+        try {
+            log.info("input filePath is: {}, param: {}",readFilePath,JSON.toJSONString(formDto));
+            String[] args = new String[]{"python",readFilePath,formDto == null ? "" : JSON.toJSONString(formDto)};
+            Process pr = Runtime.getRuntime().exec(args);
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                //此处读取的是py脚本执行时print的值
+                log.info("py execute result: {}", line);
+                data.add(line);
+                in.close();
+                pr.waitFor();
+            }
+        } catch (IOException e) {
+            log.error("doPython error", e);
+        } catch (InterruptedException e) {
+            log.error("doPython error", e);
+        }
+
         //把之前doPy的逻辑可以移过来，然后得新增一个返回页面，譬如result.html，注意，返回的页面要包含执行结果的呈现，这块要重新写，我来就行
-        return "result";
+        return "results";
     }
 
     @RequestMapping(value = "/doPy", method = RequestMethod.POST)
@@ -80,7 +115,7 @@ public class EntranceController {
         List<String> data = new ArrayList<>();
         if (StringUtils.isEmpty(readFilePath)) {
             log.info("py has't config, use py directory files");
-            String resourcePath = this.getClass().getResource("/py/demo_with_param.py").getPath();
+            String resourcePath = this.getClass().getResource("/py/Model_Predict.py").getPath();
             readFilePath = resourcePath;
         }
         try {
@@ -153,7 +188,8 @@ public class EntranceController {
         }
         ByteArrayOutputStream out = null;
         try {
-            File file = new File(pyFileSavePath +"/image/" + imageName);
+            //这个位置要做系统的判断，之前对系统的判断可以加在这
+            File file = new File(pyFileSavePath +"\\results\\" + imageName);
             if (!file.exists()) {
                 log.error("文件不存在！");
             }
